@@ -1,0 +1,6 @@
+services:
+  api-gateway:
+    build: ./api-gateway
+    ports: 
+      - "7001:7001"
+    restart: always
