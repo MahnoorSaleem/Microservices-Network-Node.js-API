@@ -1,24 +1,20 @@
-import express, { Express, Request, Response } from 'express';
-import dotenv from 'dotenv';
-
-import imageManager from './components/image-manager';
-import imageRetriever from './components/image-retriever';
+import express, { Express, Request, Response } from "express";
+import dotenv from "dotenv";
+import bodyParser from 'body-parser'
+import routes from "./routes";
 
 
 dotenv.config();
 
 const app: Express = express();
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 7002;
 
-app.use('/api', imageManager, imageRetriever);
-// app.use('/api/retrieve', imageRetriever);
-
-app.get("/", (req: Request, res: Response)=> {
-	res.send('Server running');
-})
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended: false}))
+app.use('/api', routes);
 
 const server = app.listen(port, () => {
-    console.log(`Server listening on port ${port}`);
+  console.log(`[server]: Server is running at http://localhost:${port}`);
 });
 
 process.on("uncaughtException", (err) => {

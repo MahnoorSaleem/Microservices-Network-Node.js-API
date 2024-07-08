@@ -4,3 +4,15 @@ services:
     ports: 
       - "7001:7001"
     restart: always
+  
+  image-manager-service:
+    build: ./image-manager-service
+    ports: 
+      - "7002:7002"
+    restart: always
+    environment:
+      - AWS_REGION=${AWS_REGION}
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - AWS_S3_BUCKET=${AWS_S3_BUCKET}
+      - DUPLICATE_DETECTION_SERVICE_URL=${DUPLICATE_DETECTION_SERVICE_URL}
