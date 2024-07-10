@@ -1,7 +1,8 @@
-import express, { Express, Request, Response } from "express";
+import express, { Express, NextFunction, Request, Response } from "express";
 import dotenv from "dotenv";
 import bodyParser from 'body-parser'
 import routes from "./routes";
+import { logger } from "./logger/logger";
 
 
 dotenv.config();
@@ -11,6 +12,12 @@ const port = process.env.PORT || 7002;
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: false}))
+
+app.use((req: Request, res: Response, next: NextFunction) => {
+	logger.info(`${req.method} ${req.url}`);
+	next();
+});
+
 app.use('/api', routes);
 
 const server = app.listen(port, () => {
