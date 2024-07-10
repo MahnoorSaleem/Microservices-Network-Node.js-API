@@ -1,17 +1,4 @@
 import { body } from "express-validator";
-import upload from "../../middlewares/multerConfig";
-import { NextFunction } from "express";
-
-// export const ImageUploadValidator = [
-//     body('image')
-//     .custom((value, { req }) => {
-//       if (!req.file) {
-//         throw new Error('Image file is required');
-//       }
-//       return true;
-//     }),
-//   ]
-
 
 export const uploadValidations = [
     body('image')

@@ -27,7 +27,7 @@ export const uploadImage = async (req: Request | any, res: Response): Promise<vo
             const fileBuffer = Buffer.isBuffer(buffer) ? buffer : Buffer.from(buffer, 'base64');
 
             const existingImage: any = await findImage(hash);
-            logger.info({hash, imageUrl: existingImage.url}, 'Duplication Image Found');
+            logger.info({hash, imageUrl: existingImage?.url}, 'Duplication Image Found');
     
             if (existingImage) {
                 res.json({

@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import bodyParser from 'body-parser'
 import routes from "./routes";
 import { logger } from "./logger/logger";
+import connectDB from "./config/database";
 
 
 dotenv.config();
@@ -20,10 +21,13 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 
 app.use('/api', routes);
 
-const server = app.listen(port, () => {
-  console.log(`[server]: Server is running at http://localhost:${port}`);
-});
+let server: any;
 
+connectDB().then(() => {
+	server = app.listen(port, () => {
+	console.log(`[server]: Server is running at http://localhost:${port}`);
+	});
+});
 process.on("uncaughtException", (err) => {
 	console.error('Uncaught Exception:', err);
 	process.exit(1); // Exit the process with a failure code
