@@ -19,7 +19,7 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 	next();
 });
 
-app.use('/api', routes);
+app.use('/v1', routes);
 
 let server: any;
 
