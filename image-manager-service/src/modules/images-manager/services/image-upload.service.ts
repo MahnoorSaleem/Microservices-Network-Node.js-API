@@ -1,13 +1,10 @@
 
-import ImageModel from "../../models/image";
-
-import { S3Service } from '../../services/S3Service';
-import upload from '../../middlewares/multerConfig';
 import crypto from 'crypto';
 import { Request, Response } from 'express';
-import { createResponse, sendErrorResponse, sendResponse, sendSuccessResponse } from "../../utils/ResponseHandler";
-import { findImage, saveImage } from "../../imageRepository/imageRepository";
-import { logger } from "../../logger/logger";
+import {sendErrorResponse, sendSuccessResponse } from "../utils/responseHandler";
+import { logger } from "../../../logger/logger";
+import { S3Service } from '../s3Service/S3Service';
+import { findImage, saveImage } from '../repo/image-manager.repo';
 
 
 const s3Service = new S3Service();

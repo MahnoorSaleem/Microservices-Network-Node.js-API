@@ -1,5 +1,3 @@
-// utils/responseHandler.ts
-
 import { Response } from 'express';
 
 interface ResponseData<T = any> {

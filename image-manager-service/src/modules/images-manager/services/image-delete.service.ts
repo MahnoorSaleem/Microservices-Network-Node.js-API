@@ -1,6 +1,7 @@
-import { findAndDelete } from "../../imageRepository/imageRepository";
-import { logger } from "../../logger/logger";
-import { sendErrorResponse, sendSuccessResponse } from "../../utils/ResponseHandler";
+import { logger } from "../../../logger/logger";
+import { findAndDelete } from "../repo/image-manager.repo";
+import { sendErrorResponse, sendSuccessResponse } from "../utils/responseHandler";
+
 
 export const deleteImage = async (req: any, res: any) => {
 	logger.info("Image delete Request Received");

@@ -1,6 +1,6 @@
-import { findAndUpdate } from "../../imageRepository/imageRepository";
-import { logger } from "../../logger/logger";
-import { sendErrorResponse, sendSuccessResponse } from "../../utils/ResponseHandler";
+import { logger } from "../../../logger/logger";
+import { findAndUpdate } from "../repo/image-manager.repo";
+import { sendErrorResponse, sendSuccessResponse } from "../utils/responseHandler";
 
 export const UpdateImage = async (req: any, res: any) => {
     const imageId: string = req.params.id;

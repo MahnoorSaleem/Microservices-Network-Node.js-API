@@ -1,9 +1,9 @@
 import express, { Express, NextFunction, Request, Response } from "express";
 import dotenv from "dotenv";
 import bodyParser from 'body-parser'
-import routes from "./routes";
+import imageManager from "./modules/images-manager";
 import { logger } from "./logger/logger";
-import connectDB from "./config/database";
+import connectDB from "./config/db.config";
 
 
 dotenv.config();
@@ -19,7 +19,7 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 	next();
 });
 
-app.use('/v1', routes);
+app.use('/v1', imageManager);
 
 let server: any;
 
