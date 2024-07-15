@@ -12,6 +12,6 @@ COPY . .
 
 RUN tsc
 
-EXPOSE 7001
+EXPOSE 7003
  
 CMD [ "node", "dist/index.js" ]
