@@ -14,14 +14,3 @@ export const findById = async(id: string) => {
     logger.info('find one image result', result)
     return result;
 }
-
-
-
-
-export const ImageMeta = async () => {
-    try {
-
-    } catch (error) {
-        
-    }
-}

@@ -53,7 +53,7 @@ export const listImagesQuery = async ({
   return ImageModel.find(query).sort(sort).skip(offset).limit(size);
 };
 
-export const buildImageQuery = ({
+const buildImageQuery = ({
     includeDuplicates = false,
     onlyTagged = { all: false, tagIds: [] },
     sortBy = 'modificationDate',
@@ -75,7 +75,7 @@ export const buildImageQuery = ({
     return query;
 };
   
-export const buildImageSort = (sortBy: ListImagesOptions['sortBy']): { [key: string]: SortOrder } => {
+const buildImageSort = (sortBy: ListImagesOptions['sortBy']): { [key: string]: SortOrder } => {
     let sort: { [key: string]: SortOrder } = {};
     if (sortBy === 'modificationDate') {
       sort = {
