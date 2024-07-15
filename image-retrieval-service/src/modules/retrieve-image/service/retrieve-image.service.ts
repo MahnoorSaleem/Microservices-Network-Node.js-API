@@ -1,9 +1,8 @@
 import { Request, Response } from "express";
 import { logger } from "../../../logger/logger";
-import { sendErrorResponse } from "../../../middlewares/error-handler.middleware";
-import { findById, findImage } from "../repo/retrieve-image.repo";
-import { sendSuccessResponse } from "../../../middlewares/response-handler.middleware";
-import {getImageList, listImagesQuery} from "../repo/queries/image.query";
+import { findById } from "../repo/retrieve-image.repo";
+import { listImagesQuery} from "../repo/queries/image.query";
+import { sendErrorResponse, sendSuccessResponse } from "../utils/responseHandler";
 
 interface ListImagesOptions {
   includeDuplicates?: boolean;
