@@ -5,8 +5,8 @@ import { getImages, getMetadata } from "../service/retrieve-image.service";
 
 const router = Router();
 
-router.get('/meta/:id',  validateImageRequest, validateRequest, getMetadata);
+router.get('/meta/:id', validateImageRequest(), validateRequest, getMetadata);
 
-router.get('/:id', validateImageRequest, validateRequest, getImages);
+router.get('/:id', validateImageRequest(), validateRequest, getImages);
 
 export default router;

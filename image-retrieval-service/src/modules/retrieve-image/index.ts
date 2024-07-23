@@ -6,5 +6,5 @@ const router = Router();
 
 router.use('/image', retrieve);
 
-export default Router;
+export default router;
 

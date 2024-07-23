@@ -45,6 +45,7 @@ interface ListImagesOptions {
 
 export const getImages = async (req: Request, res: Response) => {
   try {
+    console.log('here');
     const options = {
       includeDuplicates: req.query.includeDuplicates === 'true',
       onlyTagged: {
@@ -103,6 +104,8 @@ export const getImages = async (req: Request, res: Response) => {
 export const getMetadata = async (req: Request, res: Response) => {
   try {
     const id = req.params.id;
+		
+    logger.info(`Get the metadata Request for ${id}`);
 
     // Fetch metadata for the image with the specified ID
     const metadata = await findById(id);
@@ -126,7 +129,8 @@ export const getMetadata = async (req: Request, res: Response) => {
       id: metadata._id,
     };
 
-    res.json(metadataResponse);
+    // res.json(metadataResponse);
+    sendSuccessResponse(res, {data: metadataResponse}, 'Image Meta Retrieved successfully');
   } catch (error) {
 		if (error instanceof Error) {
 			logger.error({ err: error }, 'Failed to get the metadata');
